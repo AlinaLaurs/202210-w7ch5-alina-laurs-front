@@ -1,49 +1,45 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { rootState } from '../../../../infrastructure/store/store';
-import { JacketsType } from '../../models/robot';
+import { Robot } from '../../models/robot';
 import * as ac from '../../reducerRobots/actionCreatorsRobots';
-import { JacketRepository } from '../../services/robotsServices/robotsRepository';
+import { RobotsRepository } from '../../services/robotsServices/robotsRepository';
 
-export const useJackets = () => {
-    const jackets = useSelector((state: rootState) => state.jackets);
+export const useRobots = () => {
+    const robots = useSelector((state: rootState) => state.robots);
     const dispatcher = useDispatch();
-    const apiJacket = useMemo(() => new JacketRepository(), []);
+    const apiRobot = useMemo(() => new RobotsRepository(), []);
 
     useEffect(() => {
-        apiJacket
+        apiRobot
             .getAll()
-            .then((jackets) => dispatcher(ac.loadActionCreator(jackets)))
+            .then((robots) => dispatcher(ac.loadActionCreator(robots)))
             .catch((error: Error) => console.log(error.name, error.message));
-    }, [apiJacket, dispatcher]);
+    }, [apiRobot, dispatcher]);
 
-    const handleAdd = (newJacket: JacketsType) => {
-        apiJacket
-            .create(newJacket)
-            .then((jacket: JacketsType) =>
-                dispatcher(ac.addActionCreator(jacket))
-            )
+    const handleAdd = (newRobot: Robot) => {
+        apiRobot
+            .create(newRobot)
+            .then((robot: Robot) => dispatcher(ac.addActionCreator(robot)))
             .catch((error: Error) => console.log(error.name, error.message));
     };
 
-    const handleUpdate = (updateJacket: Partial<JacketsType>) => {
-        apiJacket
-            .update(updateJacket)
-            .then((jacket: JacketsType) =>
-                dispatcher(ac.updateActionCreator(jacket))
-            )
+    const handleUpdate = (updateRobot: Partial<Robot>) => {
+        apiRobot
+            .update(updateRobot)
+            .then((robot: Robot) => dispatcher(ac.updateActionCreator(robot)))
             .catch((error: Error) => console.log(error.name, error.message));
     };
 
-    const handleDelete = (id: number) => {
-        apiJacket
-            .delete(id)
+    const handleDelete = (id: string) => {
+        apiRobot
+            .delete(+id)
             .then(() => dispatcher(ac.deleteActionCreator(id)))
             .catch((error: Error) => console.log(error.name, error.message));
     };
 
     return {
-        jackets,
+        robots,
         handleAdd,
         handleUpdate,
         handleDelete,
