@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { rootState } from '../../../../infrastructure/store/store';
-import { Robot } from '../../models/robot';
+import { Robot, ProtoRobot } from '../../models/robot';
 import * as ac from '../../reducerRobots/actionCreatorsRobots';
 import { RobotsRepository } from '../../services/robotsServices/robotsRepository';
 
@@ -17,7 +17,7 @@ export const useRobots = () => {
             .catch((error: Error) => console.log(error.name, error.message));
     }, [apiRobot, dispatcher]);
 
-    const handleAdd = (newRobot: Robot) => {
+    const handleAdd = (newRobot: ProtoRobot) => {
         apiRobot
             .create(newRobot)
             .then((robot: Robot) => dispatcher(ac.addActionCreator(robot)))
