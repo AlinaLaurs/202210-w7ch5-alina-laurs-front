@@ -1,10 +1,9 @@
-import { Layout } from '../layout/layout';
-import { AppRoutes } from '../routes/app.routes';
+import HomePage from '../../../features/robots/pages/homePage/homePage';
 
 export function App() {
     return (
-        <Layout>
-            <AppRoutes></AppRoutes>
-        </Layout>
+        <div className="app">
+            <HomePage />
+        </div>
     );
 }

@@ -11,11 +11,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <Router>
-            <Provider store={appStore}>
-                <App />
-            </Provider>
-        </Router>
+        <Provider store={appStore}>
+            <App />
+        </Provider>
     </React.StrictMode>
 );
 reportWebVitals();
