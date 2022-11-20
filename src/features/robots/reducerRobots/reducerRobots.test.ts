@@ -1,31 +1,30 @@
-import { JacketsType } from '../models/robot';
-import { JacketsReducer } from './reducerRobots';
-import { actionTypesJackets } from './actionTypesRobots';
+import { Robot } from '../models/robot';
+import { RobotsReducer } from './reducerRobots';
+import { actionTypesRobots } from './actionTypesRobots';
 
-describe('Given the function JacketsReducer', () => {
-    const jacketMock: JacketsType = {
-        id: 20,
-        image: 'https://www.allsaints.com/dw/image/v2/BHHD_PRD/on/demandware.static/-/Sites-allsaints-emea-master-catalog/default/dw7c129890/images/large/WL112X/4/WL112X-4-1.jpg?sw=2400&sh=3000&sm=fit&q=70',
-        name: 'Bronte Shearling Jacket',
-        brand: 'AllSaints',
-        color: 'Red',
-        price: '1.199',
-        onSale: false,
+describe('Given the function RobotsReducer', () => {
+    const robotMock: Robot = {
+        id: '1',
+        image: 'url',
+        name: 'Pepe',
+        speed: 9,
+        strength: 6,
+        creationDate: '20.11.2022',
     };
 
     let action: { type: string; payload: unknown };
-    let state: Array<JacketsType>;
+    let state: Array<Robot>;
 
     describe('When the action is load', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.load,
-                payload: [jacketMock],
+                type: actionTypesRobots.load,
+                payload: [robotMock],
             };
             state = [];
         });
         test('Then the returned state should be the action payload', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toEqual(action.payload);
         });
     });
@@ -33,13 +32,13 @@ describe('Given the function JacketsReducer', () => {
     describe('When the action is add', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.add,
-                payload: jacketMock,
+                type: actionTypesRobots.add,
+                payload: robotMock,
             };
             state = [];
         });
         test('Then the returned state should include the action payload', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toContainEqual(action.payload);
         });
     });
@@ -47,13 +46,13 @@ describe('Given the function JacketsReducer', () => {
     describe('When the action is update', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.update,
-                payload: { ...jacketMock, title: 'Update jacket' },
+                type: actionTypesRobots.update,
+                payload: { ...robotMock, name: 'Update robot' },
             };
-            state = [jacketMock];
+            state = [robotMock];
         });
         test('Then the returned state should include the action payload', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toContainEqual(action.payload);
         });
     });
@@ -61,13 +60,13 @@ describe('Given the function JacketsReducer', () => {
     describe('When the action is update and the id is not valid', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.update,
-                payload: { ...jacketMock, id: '20', title: 'Update jacket' },
+                type: actionTypesRobots.update,
+                payload: { ...robotMock, id: '1', name: 'Miguel' },
             };
-            state = [jacketMock];
+            state = [robotMock];
         });
         test('Then the returned state should be the original state', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toEqual(state);
         });
     });
@@ -75,27 +74,27 @@ describe('Given the function JacketsReducer', () => {
     describe('When the action is delete', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.delete,
-                payload: jacketMock,
+                type: actionTypesRobots.delete,
+                payload: robotMock,
             };
-            state = [jacketMock];
+            state = [robotMock];
         });
         test('Then the returned state should not include the action payload', () => {
-            const result = JacketsReducer(state, action);
-            expect(result).toEqual([jacketMock]);
+            const result = RobotsReducer(state, action);
+            expect(result).toEqual([robotMock]);
         });
     });
 
     describe('When the action is delete and the id is not valid', () => {
         beforeEach(() => {
             action = {
-                type: actionTypesJackets.delete,
-                payload: { ...jacketMock, id: '20' },
+                type: actionTypesRobots.delete,
+                payload: { ...robotMock, id: '1' },
             };
-            state = [jacketMock];
+            state = [robotMock];
         });
         test('Then the returned state should be the original state', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toEqual(state);
         });
     });
@@ -106,10 +105,10 @@ describe('Given the function JacketsReducer', () => {
                 type: '',
                 payload: null,
             };
-            state = [jacketMock];
+            state = [robotMock];
         });
         test('Then the returned state should be ...', () => {
-            const result = JacketsReducer(state, action);
+            const result = RobotsReducer(state, action);
             expect(result).toEqual(state);
         });
     });
