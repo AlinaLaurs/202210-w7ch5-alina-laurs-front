@@ -1,19 +1,15 @@
-import { JacketsType } from '../models/robot';
+import { Robot } from '../models/robot';
 import { createAction } from '@reduxjs/toolkit';
-import { actionTypesJackets } from './actionTypesRobots';
+import { actionTypesRobots } from './actionTypesRobots';
 
-export const loadActionCreator = createAction<JacketsType[]>(
-    actionTypesJackets.load
+export const loadActionCreator = createAction<Robot[]>(actionTypesRobots.load);
+
+export const addActionCreator = createAction<Robot>(actionTypesRobots.add);
+
+export const updateActionCreator = createAction<Robot>(
+    actionTypesRobots.update
 );
 
-export const addActionCreator = createAction<JacketsType>(
-    actionTypesJackets.add
-);
-
-export const updateActionCreator = createAction<JacketsType>(
-    actionTypesJackets.update
-);
-
-export const deleteActionCreator = createAction<JacketsType['id']>(
-    actionTypesJackets.delete
+export const deleteActionCreator = createAction<Robot['id']>(
+    actionTypesRobots.delete
 );
