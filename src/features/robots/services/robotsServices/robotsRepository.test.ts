@@ -68,7 +68,7 @@ describe('Given RobotsRepository Service', () => {
 
         // create / post
         test(`Then if I use service.create()
-                it should return a Promise of the created Jacket`, async () => {
+                it should return a Promise of the created Robot`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
                 json: jest.fn().mockResolvedValue(robotMock),
@@ -78,7 +78,7 @@ describe('Given RobotsRepository Service', () => {
             expect(result).toEqual(robotMock);
         });
         test(`Then if I use service.create()
-                it should not return a Promise of the created Jacket`, async () => {
+                it should not return a Promise of the created Robot`, async () => {
             const partialMock = {
                 name: 'Curro',
             };
@@ -95,7 +95,7 @@ describe('Given RobotsRepository Service', () => {
 
         // delete
         test(`Then if I use service.delete()
-                it should return a Promise of the deleted Jacket`, async () => {
+                it should return a Promise of the deleted Robot`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
                 robotMock,
@@ -105,7 +105,7 @@ describe('Given RobotsRepository Service', () => {
             expect(result).toBeUndefined();
         });
         test(`Then if I use service.delete()
-                it should not return a Promise of the deleted Jacket`, async () => {
+                it should not return a Promise of the deleted Robot`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: false,
                 status: 400,
@@ -119,7 +119,7 @@ describe('Given RobotsRepository Service', () => {
 
         // update / patch
         test(`Then if I use service.update()
-                it should return a Promise of the updated Jacket`, async () => {
+                it should return a Promise of the updated Robot`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
                 json: jest.fn().mockResolvedValue(robotMock),
@@ -129,7 +129,7 @@ describe('Given RobotsRepository Service', () => {
             expect(result).toEqual(robotMock);
         });
         test(`Then if I use service.update()
-                it should not return a Promise of the updated Jacket`, async () => {
+                it should not return a Promise of the updated Robot`, async () => {
             const partialMock = {
                 name: 'Pepe',
             };
