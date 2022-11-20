@@ -1,10 +1,10 @@
-import { JacketsType } from '../models/robot';
+import { Robot } from '../models/robot';
 import { createReducer } from '@reduxjs/toolkit';
 import * as ac from './actionCreatorsRobots';
 
-const initialState: Array<JacketsType> = [];
+const initialState: Array<Robot> = [];
 
-export const JacketsReducer = createReducer(initialState, (builder) => {
+export const RobotsReducer = createReducer(initialState, (builder) => {
     builder.addCase(ac.loadActionCreator, (_state, action) => action.payload);
     builder.addCase(ac.addActionCreator, (state, action) => [
         ...state,
