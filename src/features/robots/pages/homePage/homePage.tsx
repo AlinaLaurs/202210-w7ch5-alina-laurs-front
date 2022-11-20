@@ -6,7 +6,7 @@ import { useRobots } from '../../hooks/hookRobots/useRobots';
 function HomePage() {
     return (
         <main>
-            <h2>Robots</h2>
+            <p>Robots</p>
         </main>
     );
 }
