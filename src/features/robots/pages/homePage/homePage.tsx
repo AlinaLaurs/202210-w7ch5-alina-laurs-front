@@ -1,9 +1,9 @@
 function HomePage() {
     return (
         <main>
-            <h2>Sales page</h2>
+            <h2>Robots</h2>
         </main>
     );
 }
 
-export default SalesPage;
+export default HomePage;
