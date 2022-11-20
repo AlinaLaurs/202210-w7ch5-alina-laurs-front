@@ -14,7 +14,7 @@ describe('Given App component', () => {
             );
         });
         test('Then it should display the title', () => {
-            const element = screen.getByText(/Robots/i);
+            const element = screen.getByText(/Alina/i);
             expect(element).toBeInTheDocument();
         });
     });
