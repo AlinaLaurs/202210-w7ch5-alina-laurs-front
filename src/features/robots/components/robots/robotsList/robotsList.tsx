@@ -1,13 +1,13 @@
-import { JacketsType } from '../../../models/robot';
-import { JacketItem } from '../robotItem/robotItem';
+import { Robot } from '../../../models/robot';
+import { RobotItem } from '../robotItem/robotItem';
 
-export function JacketList({ item }: { item: JacketsType[] }) {
+export function JacketList({ item }: { item: Robot[] }) {
     return (
         <>
             <ul>
-                {item.map((item: JacketsType) => (
+                {item.map((item: Robot) => (
                     <li key={item.id}>
-                        <JacketItem item={item}></JacketItem>
+                        <RobotItem item={item}></RobotItem>
                     </li>
                 ))}
             </ul>
