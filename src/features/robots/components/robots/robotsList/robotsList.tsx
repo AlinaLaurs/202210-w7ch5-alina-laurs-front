@@ -1,7 +1,7 @@
 import { Robot } from '../../../models/robot';
 import { RobotItem } from '../robotItem/robotItem';
 
-export function JacketList({ item }: { item: Robot[] }) {
+export function RobotsList({ item }: { item: Robot[] }) {
     return (
         <>
             <ul>
