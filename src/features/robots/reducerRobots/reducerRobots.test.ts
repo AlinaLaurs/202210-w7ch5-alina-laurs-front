@@ -57,11 +57,25 @@ describe('Given the function RobotsReducer', () => {
         });
     });
 
+    describe('When the action is update and the id is valid', () => {
+        beforeEach(() => {
+            action = {
+                type: actionTypesRobots.update,
+                payload: { ...robotMock, id: '1', name: 'Pepe' },
+            };
+            state = [robotMock];
+        });
+        test('Then the returned state should be the original state', () => {
+            const result = RobotsReducer(state, action);
+            expect(result).toEqual(state);
+        });
+    });
+
     describe('When the action is update and the id is not valid', () => {
         beforeEach(() => {
             action = {
                 type: actionTypesRobots.update,
-                payload: { ...robotMock, id: '1', name: 'Miguel' },
+                payload: { ...robotMock, id: '3001', name: 'Pepe' },
             };
             state = [robotMock];
         });
