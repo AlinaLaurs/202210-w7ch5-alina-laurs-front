@@ -1,6 +1,6 @@
-export const actionTypesJackets = {
-    add: 'jackets@add',
-    delete: 'jackets@delete',
-    update: 'jackets@update',
-    load: 'jackets@load',
+export const actionTypesRobots = {
+    add: 'robots@add',
+    delete: 'robots@delete',
+    update: 'robots@update',
+    load: 'robots@load',
 };
