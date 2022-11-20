@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter as Router } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { RobotsList } from './robotsList';
 import { Robot } from '../../../models/robot';

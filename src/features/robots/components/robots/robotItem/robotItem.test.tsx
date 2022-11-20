@@ -1,36 +1,32 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { MemoryRouter as Router } from 'react-router-dom';
 import { appStore } from '../../../../../infrastructure/store/store';
-import { useJackets } from '../../../hooks/hookRobots/useRobots';
-import { JacketsType } from '../../../models/robot';
-import { JacketItem } from './robotItem';
+import { useRobots } from '../../../hooks/hookRobots/useRobots';
+import { Robot } from '../../../models/robot';
+import { RobotItem } from './robotItem';
 
-jest.mock('../../../hooks/hookJackets/useJackets');
+jest.mock('../../../hooks/hookRobots/useRobots');
 
-describe('Given JacketItem component', () => {
+describe('Given RobotItem component', () => {
     describe('When we render the component', () => {
         test('Then it should display', async () => {
-            const jacketMock: JacketsType = {
-                id: 1,
-                image: '',
-                name: 'Dalby Suede Biker Jacket',
-                brand: '',
-                color: '',
-                price: '',
-                onSale: false,
+            const robotMock: Robot = {
+                id: '4',
+                image: 'url',
+                name: 'ISDI',
+                speed: 10,
+                strength: 3,
+                creationDate: '3.10.2022',
             };
-            (useJackets as jest.Mock).mockReturnValue({
-                products: [jacketMock],
+            (useRobots as jest.Mock).mockReturnValue({
+                products: [robotMock],
             });
             render(
-                <Router>
-                    <Provider store={appStore}>
-                        <JacketItem item={jacketMock} />
-                    </Provider>
-                </Router>
+                <Provider store={appStore}>
+                    <RobotItem item={robotMock} />
+                </Provider>
             );
-            const element = await screen.findByText(/Dalby/i);
+            const element = await screen.findByText(/ISDI/i);
             expect(element).toBeInTheDocument();
         });
     });
