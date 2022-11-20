@@ -1,13 +1,12 @@
-import { JacketsType } from '../../models/robot';
+import { Robot } from '../../models/robot';
 
-export class JacketRepository {
+export class RobotsRepository {
     public url: string;
     constructor() {
-        this.url =
-            'https://202211w6ch1saramireyapatricia-production.up.railway.app/jackets';
+        this.url = 'https://two02210-w7ch5-alina-laurs.onrender.com/robots';
     }
 
-    getJackets(): Promise<Array<JacketsType>> {
+    getRobots(): Promise<Array<Robot>> {
         return fetch(this.url).then((response) => response.json());
     }
 
@@ -19,7 +18,7 @@ export class JacketRepository {
     }
 
     // read / get
-    getAll(): Promise<Array<JacketsType>> {
+    getAll(): Promise<Array<Robot>> {
         return fetch(this.url)
             .then((response) => {
                 if (response.ok) return response.json();
@@ -31,10 +30,10 @@ export class JacketRepository {
     }
 
     // create / post
-    create(jacket: Partial<JacketsType>): Promise<JacketsType> {
+    create(robot: Partial<Robot>): Promise<Robot> {
         return fetch(this.url, {
             method: 'POST',
-            body: JSON.stringify(jacket),
+            body: JSON.stringify(robot),
             headers: {
                 'content-type': 'application/json',
             },
@@ -62,10 +61,10 @@ export class JacketRepository {
     }
 
     // uptate / patch
-    update(partialJacket: Partial<JacketsType>): Promise<JacketsType> {
-        return fetch(`${this.url}/${partialJacket.id}`, {
+    update(partialRobot: Partial<Robot>): Promise<Robot> {
+        return fetch(`${this.url}/${partialRobot.id}`, {
             method: 'PATCH',
-            body: JSON.stringify(partialJacket),
+            body: JSON.stringify(partialRobot),
             headers: {
                 'content-type': 'application/json',
             },

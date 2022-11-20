@@ -1,20 +1,19 @@
-import { JacketRepository } from './robotsRepository';
+import { RobotsRepository } from './robotsRepository';
 
-const mockJacket = {
-    id: 40,
-    image: 'https://www.allsaints.com/dw/image/v2/BHHD_PRD/on/demandware.static/-/Sites-allsaints-emea-master-catalog/default/dwf1097f95/images/large/WD267X/79/WD267X-79-1.jpg?sw=2400&sh=3000&sm=fit&q=70',
-    name: 'Dazzle Oversized Jumper Dress',
-    brand: 'AllSaints',
-    color: 'Gold',
-    price: '169',
-    onSale: false,
+const robotMock = {
+    id: '3',
+    image: 'url',
+    name: 'Patri',
+    speed: 10,
+    strength: 10,
+    creationDate: '12.05.1994',
 };
 
-describe('Given JacketRepository Service', () => {
+describe('Given RobotsRepository Service', () => {
     describe('When we instantiate it', () => {
-        let service: JacketRepository;
+        let service: RobotsRepository;
         beforeEach(() => {
-            service = new JacketRepository(); // Llama al constructor, construye el repositorio.
+            service = new RobotsRepository(); // Llama al constructor, construye el repositorio.
         });
 
         test('Then if I use service.error(), it should return an error', () => {
@@ -32,20 +31,20 @@ describe('Given JacketRepository Service', () => {
         });
 
         // get
-        test(`Then if I use service.getJackets() 
-            it should return a Promise of an Array of Jackets`, async () => {
+        test(`Then if I use service.getRobots() 
+            it should return a Promise of an Array of Robots`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
                 json: jest.fn().mockResolvedValue([]),
             });
-            const result = await service.getJackets();
+            const result = await service.getRobots();
             expect(fetch).toHaveBeenCalled();
             expect(result).toEqual([]);
         });
 
         // getAll
         test(`Then if I use service.getAll() 
-            it should return a Promise of an Array of Jackets`, async () => {
+            it should return a Promise of an Array of Robots`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
                 json: jest.fn().mockResolvedValue([]),
@@ -55,7 +54,7 @@ describe('Given JacketRepository Service', () => {
             expect(result).toEqual([]);
         });
         test(`Then if I use service.getAll() 
-            it should not return a Promise of an Array of Jackets`, async () => {
+            it should not return a Promise of an Array of Robots`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: false,
                 status: 400,
@@ -72,11 +71,11 @@ describe('Given JacketRepository Service', () => {
                 it should return a Promise of the created Jacket`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
-                json: jest.fn().mockResolvedValue(mockJacket),
+                json: jest.fn().mockResolvedValue(robotMock),
             });
-            const result = await service.create(mockJacket);
+            const result = await service.create(robotMock);
             expect(fetch).toHaveBeenCalled();
-            expect(result).toEqual(mockJacket);
+            expect(result).toEqual(robotMock);
         });
         test(`Then if I use service.create()
                 it should not return a Promise of the created Jacket`, async () => {
@@ -99,9 +98,9 @@ describe('Given JacketRepository Service', () => {
                 it should return a Promise of the deleted Jacket`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
-                mockJacket,
+                robotMock,
             });
-            const result = await service.delete(mockJacket.id);
+            const result = await service.delete(+robotMock.id);
             expect(fetch).toHaveBeenCalled();
             expect(result).toBeUndefined();
         });
@@ -112,7 +111,7 @@ describe('Given JacketRepository Service', () => {
                 status: 400,
                 statusText: 'error',
             });
-            const expectedResult = await service.delete(mockJacket.id);
+            const expectedResult = await service.delete(+robotMock.id);
             const result = new Error('Error 400: error');
             result.name = 'HTTPError';
             expect(expectedResult).toBe(result.toString());
@@ -123,11 +122,11 @@ describe('Given JacketRepository Service', () => {
                 it should return a Promise of the updated Jacket`, async () => {
             global.fetch = jest.fn().mockResolvedValue({
                 ok: true,
-                json: jest.fn().mockResolvedValue(mockJacket),
+                json: jest.fn().mockResolvedValue(robotMock),
             });
-            const result = await service.update(mockJacket);
+            const result = await service.update(robotMock);
             expect(fetch).toHaveBeenCalled();
-            expect(result).toEqual(mockJacket);
+            expect(result).toEqual(robotMock);
         });
         test(`Then if I use service.update()
                 it should not return a Promise of the updated Jacket`, async () => {
