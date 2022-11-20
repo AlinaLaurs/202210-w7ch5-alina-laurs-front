@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import { Header } from './header';
+import HomePage from './homePage';
 
-describe('Given Header component', () => {
+describe('Given SalesPage component', () => {
     describe('When we render the component', () => {
-        test('Then it should display "Robots"', () => {
-            render(<Header />);
+        beforeEach(() => {
+            render(<HomePage />);
+        });
+        test('Then it should display the title', () => {
             const element = screen.getByText(/Robots/i);
             expect(element).toBeInTheDocument();
         });

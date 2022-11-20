@@ -1,11 +1,9 @@
+import { RobotsReducer } from './../../features/robots/reducerRobots/reducerRobots';
 import { configureStore } from '@reduxjs/toolkit';
-import { JacketsReducer } from '../../features/ecommerce/reducerJackets/reducerJackets';
-import { DressesReducer } from '../../features/ecommerce/reducerDresses/reducerDresses';
 
 export const appStore = configureStore({
     reducer: {
-        jackets: JacketsReducer,
-        dresses: DressesReducer,
+        robots: RobotsReducer,
     },
 });
 

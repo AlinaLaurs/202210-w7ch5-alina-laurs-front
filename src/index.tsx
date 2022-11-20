@@ -4,18 +4,15 @@ import reportWebVitals from './reportWebVitals';
 import { App } from './infrastructure/components/app/app';
 import { Provider } from 'react-redux';
 import { appStore } from './infrastructure/store/store';
-import { MemoryRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <Router>
-            <Provider store={appStore}>
-                <App />
-            </Provider>
-        </Router>
+        <Provider store={appStore}>
+            <App />
+        </Provider>
     </React.StrictMode>
 );
 reportWebVitals();
