@@ -8,7 +8,7 @@ export type Robot = {
 };
 
 export type ProtoRobot = {
-    name?: string;
+    name: string;
     image?: string;
     speed?: number;
     strength?: number;
