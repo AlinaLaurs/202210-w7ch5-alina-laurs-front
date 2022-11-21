@@ -6,8 +6,8 @@ describe('Given HomePage component', () => {
         beforeEach(() => {
             render(<HomePage />);
         });
-        test('Then it should display the title', () => {
-            const element = screen.getByText(/Robots/i);
+        test('Then it should display "Speed"', () => {
+            const element = screen.getByText(/Speed/i);
             expect(element).toBeInTheDocument();
         });
     });
