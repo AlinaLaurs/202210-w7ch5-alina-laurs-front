@@ -1,12 +1,11 @@
-import { Provider } from 'react-redux';
-import { appStore } from '../../../../infrastructure/store/store';
 import { RobotsList } from '../../components/robots/robotsList/robotsList';
 import { useRobots } from '../../hooks/hookRobots/useRobots';
 
 function HomePage() {
+    const { robots } = useRobots();
     return (
         <main>
-            <p>Robots</p>
+            <RobotsList item={robots} />
         </main>
     );
 }

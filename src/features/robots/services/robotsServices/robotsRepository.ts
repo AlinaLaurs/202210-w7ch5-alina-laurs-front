@@ -21,8 +21,13 @@ export class RobotsRepository {
     getAll(): Promise<Array<Robot>> {
         return fetch(this.url)
             .then((response) => {
-                if (response.ok) return response.json();
-                throw this.createError(response);
+                if (!response.ok) {
+                    throw this.createError(response);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                return data.robots;
             })
             .catch((error) => {
                 return `${error}`;

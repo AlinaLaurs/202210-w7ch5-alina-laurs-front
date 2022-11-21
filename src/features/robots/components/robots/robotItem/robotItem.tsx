@@ -3,11 +3,11 @@ import { Robot } from '../../../models/robot';
 export function RobotItem({ item }: { item: Robot }) {
     return (
         <>
-            <h3>{item.name}</h3>
+            <h2>{item.name}</h2>
             <img src={item.image} alt={item.name} width="200px" />
-            <p>{item.speed}</p>
-            <p>{item.strength}</p>
-            <p>{item.creationDate}€</p>
+            <p>Speed: {item.speed}</p>
+            <p>Strength: {item.strength}</p>
+            <p>Creation date: {item.creationDate}</p>
         </>
     );
 }
