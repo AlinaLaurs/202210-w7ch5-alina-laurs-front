@@ -53,7 +53,7 @@ export class RobotsRepository {
     }
 
     // delete
-    delete(id: number): Promise<void> {
+    delete(id: string): Promise<void> {
         return fetch(`${this.url}/${id}`, {
             method: 'DELETE',
         })

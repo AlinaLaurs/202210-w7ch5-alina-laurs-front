@@ -100,7 +100,7 @@ describe('Given RobotsRepository Service', () => {
                 ok: true,
                 robotMock,
             });
-            const result = await service.delete(+robotMock.id);
+            const result = await service.delete(robotMock.id);
             expect(fetch).toHaveBeenCalled();
             expect(result).toBeUndefined();
         });
@@ -111,7 +111,7 @@ describe('Given RobotsRepository Service', () => {
                 status: 400,
                 statusText: 'error',
             });
-            const expectedResult = await service.delete(+robotMock.id);
+            const expectedResult = await service.delete(robotMock.id);
             const result = new Error('Error 400: error');
             result.name = 'HTTPError';
             expect(expectedResult).toBe(result.toString());
